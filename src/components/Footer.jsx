@@ -31,7 +31,7 @@ const Footer = () => {
             Premium car rental service with a wide selection of luxury and
             everyday vehicles for all your driving needs.
           </p>
-          <div class="flex items-center gap-3 mt-6">
+          <div className="flex items-center gap-3 mt-6">
             <a href="#">
               <img src={assets.instagram_logo} alt="" className="w-5 h-5" />
             </a>

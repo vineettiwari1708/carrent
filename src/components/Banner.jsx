@@ -9,6 +9,9 @@ const Banner = () => {
   max-w-6xl mx-3 md:mx-auto rounded-2xl overflow-hidden"
     >
       <div className="text-white">
+        <p className="mt-2">
+          <strong>User:</strong> test@gmail.com, <strong>Password:</strong> test@123
+        </p>
         <h2 className="text-3xl font-medium">Do You Own a Luxury Car?</h2>
         <p className="mt-2">
           Monetize your vehicles effortlessly by listing it on CarRental.
