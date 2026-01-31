@@ -3,11 +3,11 @@ import { assets, menuLinks } from '../assets/assets';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import toast from 'react-hot-toast';
-
-
+import { motion } from 'motion/react';
 
 const Navbar = () => {
-	const { setShowLogin, user, logout, isOwner, axios, setIsOwner } = useAppContext();
+	const { setShowLogin, user, logout, isOwner, axios, setIsOwner } =
+		useAppContext();
 	const location = useLocation();
 	const [open, setOpen] = useState(false);
 	const navigate = useNavigate();
@@ -17,25 +17,28 @@ const Navbar = () => {
 			if (data.success) {
 				setIsOwner(true);
 				toast.success(data.message);
-				console.log("data transfer successfully")
+				console.log('data transfer successfully');
 			} else {
 				toast.error(data.message);
-				console.log("data has an error")
+				console.log('data has an error');
 			}
 		} catch (error) {
 			toast.error(error.message);
-			console.log("data has an sever error")
+			console.log('data has an sever error');
 		}
-	}; 
+	};
 
 	return (
-		<div
+		<motion.div
+			initial={{ y: -20, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{duration:0.5}}
 			className={`flex items-center justify-between px-6 md:px-16 lg:px-24
   xl:px-32 py-4 text-gray-600 border-b border-borderColor
   relative transition-all ${location.pathname === '/' && 'bg-light'}`}
 		>
 			<Link to="/">
-				<img
+				<motion.img whileHover={{scale:1.05}}
 					src={assets.logo}
 					alt="logo"
 					className="h-8"
@@ -70,7 +73,7 @@ const Navbar = () => {
 				</div>
 				<div className="flex max-sm:flex-col items-start sm:items-center gap-6">
 					<button
-						onClick={() => isOwner ? navigate('/owner') : changeRole()}
+						onClick={() => (isOwner ? navigate('/owner') : changeRole())}
 						className="cursor-pointer"
 					>
 						{isOwner ? 'Dashboard' : 'List cars'}
@@ -95,7 +98,7 @@ const Navbar = () => {
 					alt="menu"
 				/>
 			</button>
-		</div>
+		</motion.div>
 	);
 };
 
